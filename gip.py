@@ -44,6 +44,72 @@ async def cls( ctx, amount : int ):
 	emb=discord.Embed( title = title_emb, colour = 0x708649)
 	await ctx.send( embed = emb )
 
+# .kick
+@client.command()
+# can use
+@commands.has_permissions( administrator = True ) 
+
+async def kick ( ctx, member: discord.Member, *, reason = None ):
+	
+	# get author
+	author = ctx.message.author
+
+	# delete command 
+	await ctx.channel.purge( limit = 1 )
+
+	# kick user
+	await member.kick( reason = reason )
+
+	# comment
+	await ctx.send( f'{ author.mention } уебал тапком { member.mention }' )
+
+
+# .ban
+@client.command()
+# can use
+@commands.has_permissions( administrator = True )
+
+async def ban ( ctx, member: discord.Member, *, reason = None ):
+
+	# get author
+	author = ctx.message.author
+
+	# delete command
+	await ctx.channel.purge( limit = 1 )
+
+	# ban user
+	await member.ban( reason = reason )
+
+	# comment
+	await ctx.send( f'{ author.mention } закатал в банку { member.mention }' )
+
+
+# .unban
+@client.command()
+# can use
+@commands.has_permissions( administrator = True )
+
+async def unban ( ctx, *, member ):
+
+	# get author
+	author = ctx.message.author
+
+	# delete command
+	await ctx.channel.purge( limit = 1 )
+
+	# get list of banned users
+	banned_users = await ctx.guild.bans()
+	for ban_entry in banned_users:
+		user = ban_entry.user
+
+		# unban user
+		await ctx.guild.unban( user )
+
+		# comment
+		await ctx.send( f'{ author.mention } выпустил из банки { user.mention }' )
+
+		return
+
 # .join
 @client.command( pass_context = True, aliases = ['j'] )
 async def join( ctx ):
@@ -315,6 +381,18 @@ async def help( ctx ):
 		           inline = False)
 
 	emb.add_field( name   = '⏹️  {}stop'.format( config.PREFIX ), 
+		           value  = 'Пропуск плейлиста' , 
+		           inline = False)
+
+	emb.add_field( name   = '👟  {}kick'.format( config.PREFIX ), 
+		           value  = 'Пропуск плейлиста' , 
+		           inline = False)
+
+	emb.add_field( name   = '🍆  {}ban'.format( config.PREFIX ), 
+		           value  = 'Пропуск плейлиста' , 
+		           inline = False)
+
+	emb.add_field( name   = '🗿  {}unband'.format( config.PREFIX ), 
 		           value  = 'Пропуск плейлиста' , 
 		           inline = False)
 
