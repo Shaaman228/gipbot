@@ -349,4 +349,4 @@ async def cls_error( ctx, error ):
 
 # Connect
 token = config.TOKEN
-client.run( str(token) )
+client.run( str( token ) )
