@@ -364,23 +364,23 @@ async def help( ctx ):
 
 	emb.add_field( name   = '🔇  {}leave/l/out'.format( config.PREFIX ), 
 		           value  = 'отзвать бота' , 
-		           inline = True)
+		           inline = False)
 
 	emb.add_field( name   = '📻  {}play/p'.format( config.PREFIX ), 
 		           value  = 'проигрыванье песен-ок' , 
-		           inline = True)
+		           inline = False)
 
 	emb.add_field( name   = '⏯️  {}pop'.format( config.PREFIX ), 
 		           value  = 'остановка или продолжение трека' , 
-		           inline = True)
+		           inline = False)
 
 	emb.add_field( name   = '⏭️  {}skip/s'.format( config.PREFIX ), 
 		           value  = 'Пропуск песни' , 
-		           inline = True)
+		           inline = False)
 
 	emb.add_field( name   = '⏹️  {}stop'.format( config.PREFIX ), 
 		           value  = 'Пропуск плейлиста' , 
-		           inline = True)
+		           inline = False)
 
 	emb.add_field( name   = '👟  {}kick'.format( config.PREFIX ), 
 		           value  = 'Пропуск плейлиста' , 
@@ -388,11 +388,11 @@ async def help( ctx ):
 
 	emb.add_field( name   = '🍆  {}ban'.format( config.PREFIX ), 
 		           value  = 'Пропуск плейлиста' , 
-		           inline = True)
+		           inline = False)
 
 	emb.add_field( name   = '🗿  {}unband'.format( config.PREFIX ), 
 		           value  = 'Пропуск плейлиста' , 
-		           inline = True)
+		           inline = False)
 
 	emb.add_field( name   = 'ℹ️  {}help'.format( config.PREFIX ),  
 		           value  = 'вызывает эту функцию', 
