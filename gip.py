@@ -18,6 +18,7 @@ client.remove_command( 'help' )
 @client.event
 async def on_ready():
 	print( '[log] ' + client.user.name + ' connected\n' )
+	print( '[log] ' + str( os.listdir(path=".") ) )
 
 	await client.change_presence( status = discord.Status.online, activity = discord.Game( 'ящик ⚰️' ) )
 
@@ -216,6 +217,7 @@ async def play( ctx, url : str ):
 		print( '[log] no old queue folder' )
 
 	await ctx.send( 'Итак, всё готово' )
+	print( '[log] ' + str( os.listdir(path=".") ) )
 
 	voice = get( client.voice_clients, guild = ctx.guild )
 
@@ -240,6 +242,8 @@ async def play( ctx, url : str ):
 
 	await what_pl( name, author, url, ctx )
 
+	print( '[log] ' + str( os.listdir(path=".") ) )
+
 	voice.play( discord.FFmpegPCMAudio( 'song.mp3' ), after = lambda e: check_queue() )
 	voice.source = discord.PCMVolumeTransformer( voice.source )
 	voice.source.voice = 0.07
@@ -254,10 +258,13 @@ async def what_pl( name, author, url, ctx ):
 		ncname = ncname + nname[ i ]
 		i = i + 1
 
-	print ( '[log] ' + ncname     + '\n' )
+	print ( '[log] ' + ncname + '\n' )
 
 	emb = discord.Embed( title = ncname, description = f'Заказал - { author }', colour = 0x708649, url = url)
 	await ctx.send( embed = emb )
+
+	print( '[log] ' + str( os.listdir(path=".") ) )
+
 	return
 
 # .pop
